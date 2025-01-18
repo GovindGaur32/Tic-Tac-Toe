@@ -1,22 +1,144 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-  }
-  .board {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.player-inputs {
+    margin-bottom: 20px;
+}
+
+.player-inputs label {
+    margin-right: 10px;
+}
+
+#currentPlayerDisplay {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
-    grid-gap: 10px;
-  }
-  .cell {
+    grid-gap: 15px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
     width: 100px;
     height: 100px;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
     cursor: pointer;
-  }
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #e0e0e0;
+}
+
+.cell.winning-cell {
+    background-color: #ffeb3b;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        background-color: #fff;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2rem;
+    animation: pop-up 0.5s ease-in-out;
+    position: relative;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 20px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    animation: float 5s ease-in infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.balloon:nth-child(2n) {
+    background-color: blue;
+}
+
+.balloon:nth-child(3n) {
+    background-color: green;
+}
+
+.balloon:nth-child(4n) {
+    background-color: yellow;
+}
+
+.balloon:nth-child(5n) {
+    background-color: purple;
+}
+
+.balloon:nth-child(6n) {
+    background-color: orange;
+}

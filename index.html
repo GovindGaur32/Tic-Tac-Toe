@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="player-inputs">
+        <label>
+            Player X: <input type="text" id="playerXName" placeholder="Enter name" />
+        </label>
+        <label>
+            Player O: <input type="text" id="playerOName" placeholder="Enter name" />
+        </label>
+    </div>
+    <div id="currentPlayerDisplay">Current Player: Player X</div>
     <div class="board"></div>
+    <div id="winnerModal" class="modal">
+        <div class="modal-content">
+            <span id="winnerName"></span> wins!
+            <div class="balloons"></div>
+        </div>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>
